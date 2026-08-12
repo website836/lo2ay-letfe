@@ -3,382 +3,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وكالة لطفي - قطع غيار سيارات أصلية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>وكالة لطفي - قطع سيارات كورية</title>
+    <!-- أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #f7b731;
-            --secondary-color: #e0d0b0;
-            --dark-bg: #1a1a1a;
-            --text-on-dark: #fff;
-            --text-on-light: #333;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --gold: #d4af37;
+            --gold-hover: #f39c12;
+            --bg-dark: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --text-light: #f5f5f5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: var(--font-family);
-            margin: 0;
-            padding: 0;
-            background-color: #fcfcfc;
-            color: var(--text-on-light);
-            scroll-behavior: smooth;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* --- الهيدر والشعار المتحرك --- */
         header {
-            background-color: var(--dark-bg);
-            color: var(--text-on-dark);
-            padding: 15px 50px;
+            background: rgba(15, 15, 15, 0.95);
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            width: 100%;
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            box-sizing: border-box;
+            z-index: 100;
         }
 
-        .logo-container {
+        .brand {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
+        /* الشعار المتحرك في الزاوية */
         .animated-logo {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            animation: pulse-logo 2s infinite;
-        }
-
-        @keyframes pulse-logo {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(247, 183, 49, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(247, 183, 49, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(247, 183, 49, 0); }
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            animation: pulse-glow 2.5s infinite alternate;
+            transition: transform 0.3s;
         }
 
         .animated-logo:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 5px 15px rgba(247, 183, 49, 0.5);
+            transform: scale(1.1) rotate(8deg);
         }
 
-        .nav-links ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 30px;
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px var(--gold); }
+            100% { box-shadow: 0 0 20px var(--gold), 0 0 30px var(--gold); }
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-on-dark);
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
+        .brand h1 {
+            color: var(--gold);
+            font-size: 1.6em;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
+        /* --- واجهة Hero --- */
         .hero {
-            background-color: var(--dark-bg);
+            position: relative;
+            padding: 80px 20px;
+            text-align: center;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            color: var(--text-on-dark);
-            padding: 160px 50px 120px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            border-bottom: 1px solid #333;
         }
 
-        /* طبقة حماية لضمان وضوح النص فوق أي صورة خلفية */
-        .hero::before {
-            content: '';
+        .hero-overlay {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.65);
+            top:0; left:0; right:0; bottom:0;
+            background: rgba(0, 0, 0, 0.75);
             z-index: 1;
         }
 
-        .hero * {
+        .hero-content {
             position: relative;
             z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 3.5em;
+        .badge-korea {
+            display: inline-block;
+            background: var(--gold);
+            color: #000;
+            padding: 6px 16px;
+            font-weight: bold;
+            border-radius: 20px;
             margin-bottom: 15px;
-            color: var(--primary-color);
+            font-size: 0.9em;
         }
 
         .hero h2 {
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            font-weight: lighter;
-            line-height: 1.4;
+            font-size: 2.8em;
+            color: #fff;
+            margin-bottom: 10px;
         }
 
-        .btn-cta {
-            background-color: var(--primary-color);
-            color: var(--dark-bg);
-            padding: 15px 40px;
-            text-decoration: none;
+        .hero p {
             font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .btn-cta:hover {
-            background-color: #d99c1c;
-            transform: translateY(-3px);
-        }
-
-        /* Features */
-        .features {
-            padding: 80px 50px;
-            text-align: center;
-        }
-
-        .features h2 {
-            font-size: 2.5em;
-            margin-bottom: 50px;
-            color: var(--dark-bg);
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background-color: var(--secondary-color);
-            padding: 35px;
-            border-radius: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .feature-card i {
-            font-size: 3em;
-            color: var(--dark-bg);
+            color: #ccc;
             margin-bottom: 20px;
         }
 
-        /* Contact Section */
-        .contact {
-            background-color: var(--secondary-color);
-            padding: 80px 50px;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: var(--dark-bg);
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .info-block {
+        .location-info {
             display: flex;
             align-items: center;
-            gap: 15px;
-            background: #fff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            justify-content: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 1.1em;
+            margin-top: 10px;
         }
 
-        .info-block i {
-            font-size: 2em;
-            color: var(--primary-color);
+        /* --- قسم أزرار الاتصال والواتساب --- */
+        .contact-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
         }
 
-        .info-block a {
-            text-decoration: none;
-            color: var(--dark-bg);
-            font-size: 1.2em;
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .phone-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .phone-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .phone-card:hover {
+            border-color: var(--gold);
+        }
+
+        .phone-number {
+            font-size: 1.4em;
             font-weight: bold;
+            color: #fff;
+            margin: 10px 0 15px;
+            direction: ltr;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover { opacity: 0.85; }
+        .btn-call { background-color: #2980b9; color: white; }
+        .btn-wa { background-color: #25d366; color: white; }
+
+        /* --- السوشيال ميديا --- */
+        .social-box {
+            text-align: center;
+            margin: 30px 0;
         }
 
         .social-links {
-            font-size: 2.5em;
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
+            margin-top: 15px;
         }
 
-        .social-links a {
-            color: var(--dark-bg);
-            transition: color 0.3s ease, transform 0.3s ease;
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
         }
 
-        .social-links a:hover {
-            color: var(--primary-color);
-            transform: scale(1.15);
+        .social-icon:hover {
+            background: var(--gold);
+            color: #000;
         }
 
+        /* --- الفوتر وزر المدير --- */
         footer {
-            background-color: var(--dark-bg);
-            color: var(--text-on-dark);
-            padding: 25px 50px;
+            margin-top: auto;
+            background: #080808;
+            padding: 20px;
             text-align: center;
+            border-top: 1px solid #222;
         }
 
-        @media (max-width: 768px) {
-            header {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 10px;
-            }
-            .hero h1 { font-size: 2.3em; }
-            .hero h2 { font-size: 1.3em; }
+        .admin-trigger-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: #888;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.85em;
         }
+
+        .admin-trigger-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* --- نافذة لوحة التحكم (Modal) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #1e1e1e;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            padding: 25px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; left: 15px;
+            color: #aaa;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--gold);
+            font-size: 0.9em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #000;
+            color: #fff;
+        }
+
+        .save-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--gold);
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .save-btn:hover { background: var(--gold-hover); }
     </style>
 </head>
 <body>
 
-    <header id="mainHeader">
-        <div class="logo-container">
-            <img id="siteLogo" src="https://via.placeholder.com/150/f7b731/ffffff?text=L" alt="شعار وكالة لطفي" class="animated-logo">
-            <h1 style="margin: 0; font-size: 1.5em; color: var(--primary-color);">وكالة لطفي</h1>
+    <!-- الهيدر -->
+    <header>
+        <div class="brand">
+            <img id="siteLogo" src="logo.jpg" alt="شعار وكالة لطفي" class="animated-logo" onerror="this.src='https://via.placeholder.com/100/d4af37/000000?text=لطفي'">
+            <h1 id="headerTitle">وكالة لطفي</h1>
         </div>
-        <nav class="nav-links">
-            <ul>
-                <li><a href="#hero">الرئيسية</a></li>
-                <li><a href="#features">الميزات</a></li>
-                <li><a href="#contact">تواصل معنا</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section id="hero" class="hero">
-        <h1 id="heroTitle">تميز في كل قطعة غيار</h1>
-        <h2 id="heroSubTitle">متخصصون في قطع غيار سيارات الكورية </h2>
-        <a href="#contact" class="btn-cta">اطلب قطعتك الآن</a>
-    </section>
-
-    <section id="features" class="features">
-        <h2>لماذا تختار وكالة لطفي؟</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <i class="fas fa-check-circle"></i>
-                <h3>قطع غيار أصلية ومضمونة</h3>
-                <p>نضمن لك أعلى جودة وأداء لسيارتك من خلال قطع غيار أصلية ومضمونة.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-tags"></i>
-                <h3>أسعار تنافسية</h3>
-                <p>نقدم أفضل قيمة مقابل المال مع أسعار مدروسة وتنافسية في السوق.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-shipping-fast"></i>
-                <h3>توصيل سريع</h3>
-                <p>العنوان معرة النعمان نزلة  تلمنس</p>
+    <!-- الواجهة الرئيسية -->
+    <section id="heroSection" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge-korea">متخصصون في القطع الكورية فقط</span>
+            <h2 id="mainTitle">تميز في كل قطعة غيار</h2>
+            <p id="subTitle">قطع غيار أصلية ومضمونة للسيارات الكورية (Hyundai, Kia)</p>
+            <div class="location-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="locationText">معرة النعمان - نزلة تلمنس</span>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <h2>تواصل معنا</h2>
-        <div class="contact-info">
-            <div class="info-block">
-                <i class="fas fa-phone-alt"></i>
-                <div>
-                    <p style="margin: 0; font-size: 0.9em; color: #666;">اتصال مباشر:</p>
-                    <a id="phone1Link" href="tel:0944526994"><span id="phone1Text">0944526994</span></a>
+    <!-- قسم التواصل بالهاتف والواتساب -->
+    <section class="contact-section">
+        <h3 class="section-title">تواصل معنا المباشر</h3>
+        <div class="phone-cards">
+            
+            <!-- الرقم الأول -->
+            <div class="phone-card">
+                <i class="fas fa-headset fa-2x" style="color: var(--gold);"></i>
+                <div class="phone-number" id="p1Display">0944526994</div>
+                <div class="action-btns">
+                    <a id="p1Call" href="tel:0944526994" class="btn btn-call"><i class="fas fa-phone"></i> اتصال</a>
+                    <a id="p1Wa" href="https://wa.me/963944526994" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
                 </div>
             </div>
-            <div class="info-block">
-                <i class="fab fa-whatsapp"></i>
-                <div>
-                    <p style="margin: 0; font-size: 0.9em; color: #666;">واتساب:</p>
-                    <a id="phone2Link" href="https://wa.me/963945550530" target="_blank"><span id="phone2Text">0945550530</span></a>
+
+            <!-- الرقم الثاني -->
+            <div class="phone-card">
+                <i class="fas fa-mobile-alt fa-2x" style="color: var(--gold);"></i>
+                <div class="phone-number" id="p2Display">0945550530</div>
+                <div class="action-btns">
+                    <a id="p2Call" href="tel:0945550530" class="btn btn-call"><i class="fas fa-phone"></i> اتصال</a>
+                    <a id="p2Wa" href="https://wa.me/963945550530" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
                 </div>
             </div>
+
         </div>
 
-        <h3>تابعنا على المنصات:</h3>
-        <div class="social-links">
-            <a id="instaBtn" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a id="fbBtn" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a id="tiktokBtn" href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <!-- السوشيال ميديا -->
+        <div class="social-box">
+            <p style="color: #888;">صفحاتنا على وسائل التواصل الاجتماعي:</p>
+            <div class="social-links">
+                <a id="instaLink" href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a id="fbLink" href="#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a id="tiktokLink" href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            </div>
         </div>
     </section>
 
+    <!-- الفوتر وزر دخول المدير -->
     <footer>
-        <p>&copy; 2026 وكالة لطفي لقطع غيار السيارات. جميع الحقوق محفوظة.</p>
+        <p>&copy; 2026 وكالة لطفي - جميع الحقوق محفوظة</p>
+        <button class="admin-trigger-btn" onclick="openAdmin()"><i class="fas fa-lock"></i> لوحة التحكم (للمدير)</button>
     </footer>
 
-    <!-- السكريبت المسؤول عن جلب وتحديث المحتوى المحفوظ من لوحة التحكم -->
+    <!-- نافذة تعديل البيانات للمدير -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAdmin()">&times;</span>
+            <h3 style="color: var(--gold); margin-bottom: 20px; text-align: center;"><i class="fas fa-user-cog"></i> لوحة تحكم المدير</h3>
+            
+            <form id="adminForm">
+                <div class="form-group">
+                    <label>رابط/اسم صورة الشعار (مثال: logo.jpg):</label>
+                    <input type="text" id="inLogo">
+                </div>
+                <div class="form-group">
+                    <label>رابط صورة خلفية الواجهة الرئيسية:</label>
+                    <input type="text" id="inHeroBg">
+                </div>
+                <div class="form-group">
+                    <label>العنوان:</label>
+                    <input type="text" id="inLoc">
+                </div>
+                <div class="form-group">
+                    <label>الرقم الأول:</label>
+                    <input type="text" id="inP1">
+                </div>
+                <div class="form-group">
+                    <label>الرقم الثاني:</label>
+                    <input type="text" id="inP2">
+                </div>
+                <div class="form-group">
+                    <label>رابط إنستغرام:</label>
+                    <input type="text" id="inInsta">
+                </div>
+                <div class="form-group">
+                    <label>رابط فيسبوك:</label>
+                    <input type="text" id="inFb">
+                </div>
+                <div class="form-group">
+                    <label>رابط تيك توك:</label>
+                    <input type="text" id="inTiktok">
+                </div>
+
+                <button type="submit" class="save-btn"><i class="fas fa-save"></i> حفظ التحديثات</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- السكريبت التشغيلي -->
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            // الشعار
-            if(localStorage.getItem('site_logoUrl')) {
-                document.getElementById('siteLogo').src = localStorage.getItem('site_logoUrl');
+        // كلمة السر الافتراضية للوحة التحكم
+        const ADMIN_PASS = "1234";
+
+        // تحميل البيانات المحفوظة
+        function loadData() {
+            if(localStorage.getItem('lutfi_logo')) document.getElementById('siteLogo').src = localStorage.getItem('lutfi_logo');
+            if(localStorage.getItem('lutfi_heroBg')) document.getElementById('heroSection').style.backgroundImage = `url('${localStorage.getItem('lutfi_heroBg')}')`;
+            if(localStorage.getItem('lutfi_loc')) document.getElementById('locationText').innerText = localStorage.getItem('lutfi_loc');
+            
+            // تحديث الرقم 1
+            if(localStorage.getItem('lutfi_p1')) {
+                let p1 = localStorage.getItem('lutfi_p1');
+                document.getElementById('p1Display').innerText = p1;
+                document.getElementById('p1Call').href = 'tel:' + p1;
+                document.getElementById('p1Wa').href = 'https://wa.me/' + p1.replace(/[^0-9]/g, '');
             }
 
-            // صورة الخلفية واللون
-            if(localStorage.getItem('site_bgImageUrl')) {
-                document.getElementById('hero').style.backgroundImage = `url('${localStorage.getItem('site_bgImageUrl')}')`;
-            }
-            if(localStorage.getItem('site_bgColor')) {
-                document.documentElement.style.setProperty('--dark-bg', localStorage.getItem('site_bgColor'));
-            }
-
-            // العناوين
-            if(localStorage.getItem('site_mainTitle')) {
-                document.getElementById('heroTitle').innerText = localStorage.getItem('site_mainTitle');
-            }
-            if(localStorage.getItem('site_subTitle')) {
-                document.getElementById('heroSubTitle').innerText = localStorage.getItem('site_subTitle');
+            // تحديث الرقم 2
+            if(localStorage.getItem('lutfi_p2')) {
+                let p2 = localStorage.getItem('lutfi_p2');
+                document.getElementById('p2Display').innerText = p2;
+                document.getElementById('p2Call').href = 'tel:' + p2;
+                document.getElementById('p2Wa').href = 'https://wa.me/' + p2.replace(/[^0-9]/g, '');
             }
 
-            // أرقام الهواتف
-            if(localStorage.getItem('site_phone1')) {
-                const p1 = localStorage.getItem('site_phone1');
-                document.getElementById('phone1Text').innerText = p1;
-                document.getElementById('phone1Link').href = 'tel:' + p1;
-            }
-            if(localStorage.getItem('site_phone2')) {
-                const p2 = localStorage.getItem('site_phone2');
-                document.getElementById('phone2Text').innerText = p2;
-                document.getElementById('phone2Link').href = 'https://wa.me/' + p2.replace(/[^0-9]/g, '');
-            }
+            // روابط التواصل
+            if(localStorage.getItem('lutfi_insta')) document.getElementById('instaLink').href = localStorage.getItem('lutfi_insta');
+            if(localStorage.getItem('lutfi_fb')) document.getElementById('fbLink').href = localStorage.getItem('lutfi_fb');
+            if(localStorage.getItem('lutfi_tiktok')) document.getElementById('tiktokLink').href = localStorage.getItem('lutfi_tiktok');
+        }
 
-            // روابط التواصل الاجتماعي
-            if(localStorage.getItem('site_instaUrl')) {
-                document.getElementById('instaBtn').href = localStorage.getItem('site_instaUrl');
+        // فتح لوحة المدير بعد التحقق من كلمة السر
+        function openAdmin() {
+            let pwd = prompt("أدخل كلمة سر المدير للدخول:");
+            if (pwd === ADMIN_PASS) {
+                // تعبئة البيانات الحالية في الحقول
+                document.getElementById('inLogo').value = localStorage.getItem('lutfi_logo') || 'logo.jpg';
+                document.getElementById('inHeroBg').value = localStorage.getItem('lutfi_heroBg') || '';
+                document.getElementById('inLoc').value = document.getElementById('locationText').innerText;
+                document.getElementById('inP1').value = document.getElementById('p1Display').innerText;
+                document.getElementById('inP2').value = document.getElementById('p2Display').innerText;
+                document.getElementById('inInsta').value = localStorage.getItem('lutfi_insta') || '#';
+                document.getElementById('inFb').value = localStorage.getItem('lutfi_fb') || '#';
+                document.getElementById('inTiktok').value = localStorage.getItem('lutfi_tiktok') || '#';
+
+                document.getElementById('adminModal').style.display = 'flex';
+            } else if (pwd !== null) {
+                alert("كلمة السر غير صحيحة!");
             }
-            if(localStorage.getItem('site_fbUrl')) {
-                document.getElementById('fbBtn').href = localStorage.getItem('site_fbUrl');
-            }
-            if(localStorage.getItem('site_tiktokUrl')) {
-                document.getElementById('tiktokBtn').href = localStorage.getItem('site_tiktokUrl');
-            }
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        // حفظ التعديلات
+        document.getElementById('adminForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            localStorage.setItem('lutfi_logo', document.getElementById('inLogo').value);
+            localStorage.setItem('lutfi_heroBg', document.getElementById('inHeroBg').value);
+            localStorage.setItem('lutfi_loc', document.getElementById('inLoc').value);
+            localStorage.setItem('lutfi_p1', document.getElementById('inP1').value);
+            localStorage.setItem('lutfi_p2', document.getElementById('inP2').value);
+            localStorage.setItem('lutfi_insta', document.getElementById('inInsta').value);
+            localStorage.setItem('lutfi_fb', document.getElementById('inFb').value);
+            localStorage.setItem('lutfi_tiktok', document.getElementById('inTiktok').value);
+
+            loadData();
+            closeAdmin();
+            alert("تم حفظ التعديلات بنجاح!");
         });
+
+        // تشغيل الجلب أول مرة
+        loadData();
     </script>
 </body>
 </html>
