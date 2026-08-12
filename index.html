@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وكالة لطفي - قطع سيارات كورية</title>
-    <!-- أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -30,7 +29,6 @@
             min-height: 100vh;
         }
 
-        /* --- الهيدر والشعار المتحرك --- */
         header {
             background: rgba(15, 15, 15, 0.95);
             padding: 15px 30px;
@@ -49,7 +47,6 @@
             gap: 15px;
         }
 
-        /* الشعار المتحرك في الزاوية */
         .animated-logo {
             width: 55px;
             height: 55px;
@@ -74,7 +71,6 @@
             font-size: 1.6em;
         }
 
-        /* --- واجهة Hero --- */
         .hero {
             position: relative;
             padding: 80px 20px;
@@ -131,7 +127,6 @@
             margin-top: 10px;
         }
 
-        /* --- قسم أزرار الاتصال والواتساب --- */
         .contact-section {
             max-width: 900px;
             margin: 40px auto;
@@ -196,7 +191,6 @@
         .btn-call { background-color: #2980b9; color: white; }
         .btn-wa { background-color: #25d366; color: white; }
 
-        /* --- السوشيال ميديا --- */
         .social-box {
             text-align: center;
             margin: 30px 0;
@@ -229,7 +223,6 @@
             color: #000;
         }
 
-        /* --- الفوتر وزر المدير --- */
         footer {
             margin-top: auto;
             background: #080808;
@@ -254,7 +247,6 @@
             border-color: var(--gold);
         }
 
-        /* --- نافذة لوحة التحكم (Modal) --- */
         .modal {
             display: none;
             position: fixed;
@@ -324,21 +316,19 @@
 </head>
 <body>
 
-    <!-- الهيدر -->
     <header>
         <div class="brand">
             <img id="siteLogo" src="logo.jpg" alt="شعار وكالة لطفي" class="animated-logo" onerror="this.src='https://via.placeholder.com/100/d4af37/000000?text=لطفي'">
-            <h1 id="headerTitle">وكالة لطفي</h1>
+            <h1>وكالة لطفي</h1>
         </div>
     </header>
 
-    <!-- الواجهة الرئيسية -->
     <section id="heroSection" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <span class="badge-korea">متخصصون في القطع الكورية فقط</span>
-            <h2 id="mainTitle">تميز في كل قطعة غيار</h2>
-            <p id="subTitle">قطع غيار أصلية ومضمونة للسيارات الكورية (Hyundai, Kia)</p>
+            <h2>تميز في كل قطعة غيار</h2>
+            <p>قطع غيار أصلية ومضمونة للسيارات الكورية (Hyundai, Kia)</p>
             <div class="location-info">
                 <i class="fas fa-map-marker-alt"></i>
                 <span id="locationText">معرة النعمان - نزلة تلمنس</span>
@@ -346,12 +336,9 @@
         </div>
     </section>
 
-    <!-- قسم التواصل بالهاتف والواتساب -->
     <section class="contact-section">
         <h3 class="section-title">تواصل معنا المباشر</h3>
         <div class="phone-cards">
-            
-            <!-- الرقم الأول -->
             <div class="phone-card">
                 <i class="fas fa-headset fa-2x" style="color: var(--gold);"></i>
                 <div class="phone-number" id="p1Display">0944526994</div>
@@ -361,7 +348,6 @@
                 </div>
             </div>
 
-            <!-- الرقم الثاني -->
             <div class="phone-card">
                 <i class="fas fa-mobile-alt fa-2x" style="color: var(--gold);"></i>
                 <div class="phone-number" id="p2Display">0945550530</div>
@@ -370,10 +356,8 @@
                     <a id="p2Wa" href="https://wa.me/963945550530" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
                 </div>
             </div>
-
         </div>
 
-        <!-- السوشيال ميديا -->
         <div class="social-box">
             <p style="color: #888;">صفحاتنا على وسائل التواصل الاجتماعي:</p>
             <div class="social-links">
@@ -384,25 +368,24 @@
         </div>
     </section>
 
-    <!-- الفوتر وزر دخول المدير -->
     <footer>
         <p>&copy; 2026 وكالة لطفي - جميع الحقوق محفوظة</p>
         <button class="admin-trigger-btn" onclick="openAdmin()"><i class="fas fa-lock"></i> لوحة التحكم (للمدير)</button>
     </footer>
 
-    <!-- نافذة تعديل البيانات للمدير -->
+    <!-- نافذة لوحة التحكم -->
     <div id="adminModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeAdmin()">&times;</span>
-            <h3 style="color: var(--gold); margin-bottom: 20px; text-align: center;"><i class="fas fa-user-cog"></i> لوحة تحكم المدير</h3>
+            <h3 style="color: var(--gold); margin-bottom: 20px; text-align: center;"><i class="fas fa-user-cog"></i> لوحة تحكم المدير (سحابية)</h3>
             
             <form id="adminForm">
                 <div class="form-group">
-                    <label>رابط/اسم صورة الشعار (مثال: logo.jpg):</label>
+                    <label>رابط صورة الشعار (ينتهي بـ .jpg):</label>
                     <input type="text" id="inLogo">
                 </div>
                 <div class="form-group">
-                    <label>رابط صورة خلفية الواجهة الرئيسية:</label>
+                    <label>رابط صورة خلفية الواجهة:</label>
                     <input type="text" id="inHeroBg">
                 </div>
                 <div class="form-group">
@@ -430,59 +413,67 @@
                     <input type="text" id="inTiktok">
                 </div>
 
-                <button type="submit" class="save-btn"><i class="fas fa-save"></i> حفظ التحديثات</button>
+                <button type="submit" class="save-btn"><i class="fas fa-cloud-upload-alt"></i> حفظ ونشر للجميع</button>
             </form>
         </div>
     </div>
 
-    <!-- السكريبت التشغيلي -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <script>
-        // كلمة السر الافتراضية للوحة التحكم
+        // إعدادات Firebase العامة والسحابية
+        const firebaseConfig = {
+            databaseURL: "https://wakalat-lutfi-default-rtdb.firebaseio.com"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
         const ADMIN_PASS = "1234";
 
-        // تحميل البيانات المحفوظة
-        function loadData() {
-            if(localStorage.getItem('lutfi_logo')) document.getElementById('siteLogo').src = localStorage.getItem('lutfi_logo');
-            if(localStorage.getItem('lutfi_heroBg')) document.getElementById('heroSection').style.backgroundImage = `url('${localStorage.getItem('lutfi_heroBg')}')`;
-            if(localStorage.getItem('lutfi_loc')) document.getElementById('locationText').innerText = localStorage.getItem('lutfi_loc');
-            
-            // تحديث الرقم 1
-            if(localStorage.getItem('lutfi_p1')) {
-                let p1 = localStorage.getItem('lutfi_p1');
-                document.getElementById('p1Display').innerText = p1;
-                document.getElementById('p1Call').href = 'tel:' + p1;
-                document.getElementById('p1Wa').href = 'https://wa.me/' + p1.replace(/[^0-9]/g, '');
+        // الاستماع الفوري والحي للتحديثات من قاعدة البيانات
+        db.ref('siteData').on('value', (snapshot) => {
+            const data = snapshot.val();
+            if(data) {
+                if(data.logo) document.getElementById('siteLogo').src = data.logo;
+                if(data.heroBg) document.getElementById('heroSection').style.backgroundImage = `url('${data.heroBg}')`;
+                if(data.loc) document.getElementById('locationText').innerText = data.loc;
+                
+                if(data.p1) {
+                    document.getElementById('p1Display').innerText = data.p1;
+                    document.getElementById('p1Call').href = 'tel:' + data.p1;
+                    document.getElementById('p1Wa').href = 'https://wa.me/' + data.p1.replace(/[^0-9]/g, '');
+                }
+
+                if(data.p2) {
+                    document.getElementById('p2Display').innerText = data.p2;
+                    document.getElementById('p2Call').href = 'tel:' + data.p2;
+                    document.getElementById('p2Wa').href = 'https://wa.me/' + data.p2.replace(/[^0-9]/g, '');
+                }
+
+                if(data.insta) document.getElementById('instaLink').href = data.insta;
+                if(data.fb) document.getElementById('fbLink').href = data.fb;
+                if(data.tiktok) document.getElementById('tiktokLink').href = data.tiktok;
             }
+        });
 
-            // تحديث الرقم 2
-            if(localStorage.getItem('lutfi_p2')) {
-                let p2 = localStorage.getItem('lutfi_p2');
-                document.getElementById('p2Display').innerText = p2;
-                document.getElementById('p2Call').href = 'tel:' + p2;
-                document.getElementById('p2Wa').href = 'https://wa.me/' + p2.replace(/[^0-9]/g, '');
-            }
-
-            // روابط التواصل
-            if(localStorage.getItem('lutfi_insta')) document.getElementById('instaLink').href = localStorage.getItem('lutfi_insta');
-            if(localStorage.getItem('lutfi_fb')) document.getElementById('fbLink').href = localStorage.getItem('lutfi_fb');
-            if(localStorage.getItem('lutfi_tiktok')) document.getElementById('tiktokLink').href = localStorage.getItem('lutfi_tiktok');
-        }
-
-        // فتح لوحة المدير بعد التحقق من كلمة السر
         function openAdmin() {
             let pwd = prompt("أدخل كلمة سر المدير للدخول:");
             if (pwd === ADMIN_PASS) {
-                // تعبئة البيانات الحالية في الحقول
-                document.getElementById('inLogo').value = localStorage.getItem('lutfi_logo') || 'logo.jpg';
-                document.getElementById('inHeroBg').value = localStorage.getItem('lutfi_heroBg') || '';
-                document.getElementById('inLoc').value = document.getElementById('locationText').innerText;
-                document.getElementById('inP1').value = document.getElementById('p1Display').innerText;
-                document.getElementById('inP2').value = document.getElementById('p2Display').innerText;
-                document.getElementById('inInsta').value = localStorage.getItem('lutfi_insta') || '#';
-                document.getElementById('inFb').value = localStorage.getItem('lutfi_fb') || '#';
-                document.getElementById('inTiktok').value = localStorage.getItem('lutfi_tiktok') || '#';
+                db.ref('siteData').once('value', (snapshot) => {
+                    const data = snapshot.val() || {};
+                    document.getElementById('inLogo').value = data.logo || '';
+                    document.getElementById('inHeroBg').value = data.heroBg || '';
+                    document.getElementById('inLoc').value = data.loc || document.getElementById('locationText').innerText;
+                    document.getElementById('inP1').value = data.p1 || document.getElementById('p1Display').innerText;
+                    document.getElementById('inP2').value = data.p2 || document.getElementById('p2Display').innerText;
+                    document.getElementById('inInsta').value = data.insta || '#';
+                    document.getElementById('inFb').value = data.fb || '#';
+                    document.getElementById('inTiktok').value = data.tiktok || '#';
 
-                document.getElementById('adminModal').style.display = 'flex';
+                    document.getElementById('adminModal').style.display = 'flex';
+                });
             } else if (pwd !== null) {
                 alert("كلمة السر غير صحيحة!");
             }
@@ -492,25 +483,28 @@
             document.getElementById('adminModal').style.display = 'none';
         }
 
-        // حفظ التعديلات
+        // حفظ البيانات في السحاب
         document.getElementById('adminForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            localStorage.setItem('lutfi_logo', document.getElementById('inLogo').value);
-            localStorage.setItem('lutfi_heroBg', document.getElementById('inHeroBg').value);
-            localStorage.setItem('lutfi_loc', document.getElementById('inLoc').value);
-            localStorage.setItem('lutfi_p1', document.getElementById('inP1').value);
-            localStorage.setItem('lutfi_p2', document.getElementById('inP2').value);
-            localStorage.setItem('lutfi_insta', document.getElementById('inInsta').value);
-            localStorage.setItem('lutfi_fb', document.getElementById('inFb').value);
-            localStorage.setItem('lutfi_tiktok', document.getElementById('inTiktok').value);
+            
+            const newData = {
+                logo: document.getElementById('inLogo').value,
+                heroBg: document.getElementById('inHeroBg').value,
+                loc: document.getElementById('inLoc').value,
+                p1: document.getElementById('inP1').value,
+                p2: document.getElementById('inP2').value,
+                insta: document.getElementById('inInsta').value,
+                fb: document.getElementById('inFb').value,
+                tiktok: document.getElementById('inTiktok').value
+            };
 
-            loadData();
-            closeAdmin();
-            alert("تم حفظ التعديلات بنجاح!");
+            db.ref('siteData').set(newData).then(() => {
+                closeAdmin();
+                alert("تم تحديث البيانات ونشرها لجميع الزوار بنجاح!");
+            }).catch(err => {
+                alert("حدث خطأ أثناء الحفظ: " + err.message);
+            });
         });
-
-        // تشغيل الجلب أول مرة
-        loadData();
     </script>
 </body>
 </html>
